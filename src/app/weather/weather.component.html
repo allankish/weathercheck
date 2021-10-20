@@ -1,0 +1,48 @@
+<div class="col-sm-5 mx-auto">
+
+    <h4>Weather Tracking</h4>
+
+    <div class="alert alert-danger p-1" *ngIf="err">
+        <strong>{{err}}</strong>
+    </div>
+
+    <form class="form" [formGroup]="weatherForm" (ngSubmit)="formSubmitted()">
+        <div class="form-group">
+            <label>CityName</label>
+            <input type="text" formControlName="city" class="form-control" />
+            <div class="alert alert-danger" *ngIf="city.invalid &&(city.dirty || city.touched)">
+                <span *ngIf="city.errors?.required">This field is mandate</span>
+                <span *ngIf="city.errors?.minlength">This field requires minimum 4 chars</span>
+            </div>
+        </div>
+        
+        <button class="btn btn-block btn-primary" [disabled]="weatherForm.invalid">
+            Submit
+        </button>
+    </form>
+
+
+    <table class="table table-border table-hover" *ngIf="weatherData">
+        <thead>
+            <tr *ngIf="!weatherData.main">
+                <th>
+                    <strong>No records available</strong>
+                </th>
+            </tr>
+            <tr *ngIf="weatherData.cod==200">
+                <th>Temperature</th>
+                <th>Feels Like</th>
+                <th>Minimum Temperature</th>
+                <th>Maximum Temperature</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="text-left">{{weatherData.main.temp}}</td>
+                <td class="text-left">{{weatherData["main"].feels_like}}</td>
+                <td class="text-left">{{weatherData["main"].temp_min}}</td>
+                <td class="text-left">{{weatherData["main"].temp_max}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
