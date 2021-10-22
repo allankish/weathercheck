@@ -1,3 +1,4 @@
+<a class="align-text-right" [routerLink]="" (click)="logout()">Logout</a>
 <div class="col-sm-5 mx-auto">
 
     <h4>Weather Tracking</h4>
@@ -39,9 +40,9 @@
         <tbody>
             <tr>
                 <td class="text-left">{{weatherData.main.temp}}</td>
-                <td class="text-left">{{weatherData["main"].feels_like}}</td>
-                <td class="text-left">{{weatherData["main"].temp_min}}</td>
-                <td class="text-left">{{weatherData["main"].temp_max}}</td>
+                <td class="text-left">{{weatherData.main.feels_like}}</td>
+                <td class="text-left">{{weatherData.main.temp_min}}</td>
+                <td class="text-left">{{weatherData.main.temp_max}}</td>
             </tr>
         </tbody>
     </table>

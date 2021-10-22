@@ -10,13 +10,15 @@ export class WeatherService {
 
   weatherAPI:string;
   appID:string;
+
   constructor(private httpClient : HttpClient) {
+    
     this.weatherAPI=environment.weatherAPI;
     this.appID=environment.AppID;
   }
 
-  get(city:string):Observable<any[]>{
-    return this.httpClient.get<any[]>(this.weatherAPI + "?q=" + city + "&appid=" + this.appID + "&units=metric");
+  get(city:string):Observable<object[]>{
+    return this.httpClient.get<object[]>(this.weatherAPI + "?q=" + city + "&appid=" + this.appID + "&units=metric");
   }
   
 }
